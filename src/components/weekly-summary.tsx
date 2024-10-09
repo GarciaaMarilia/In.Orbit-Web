@@ -26,7 +26,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
 
  return (
   <main className="max-w-[540px] py-10 px-5 mx-auto flex flex-col gap-6">
-    <div className="flex items-center justify-between">
+   <div className="flex items-center justify-between">
     <div className="flex items-center gap-3">
      <InOrbitIcon />
      <span className="text-lg font-semibold">
@@ -55,7 +55,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
      </span>
      <span>{completedPercentage}%</span>
     </div>
-   </div> 
+   </div>
 
    <Separator />
 
@@ -63,35 +63,43 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
 
    <div className="space-y-6">
     <h2 className="text-xl font-medium">Sua semana</h2>
-{/* 
-    {Object.entries(summary.goalsPerDay).map(([date, goals]) => {
-     const weekDay = dayjs(date).format("dddd");
-     const parsedDate = dayjs(date).format("D[ de ]MMM");
 
-     return (
-      <div className="space-y-4" key={date}>
-       <h3 className="font-medium capitalize">
-        {weekDay} <span className="text-zinc-400 text-xs">({parsedDate})</span>
-       </h3>
+    {summary.goalsPerDay ? (
+     Object.entries(summary.goalsPerDay).map(([date, goals]) => {
+      const weekDay = dayjs(date).format("dddd");
+      const parsedDate = dayjs(date).format("D[ de ]MMM");
 
-       <ul className="space-y-3">
-        {goals.map((goal) => {
-         const parsedTime = dayjs(goal.createdAt).format("HH:mm[h]");
+      return (
+       <div className="space-y-4" key={date}>
+        <h3 className="font-medium capitalize">
+         {weekDay} <span className="text-zinc-400 text-xs">({parsedDate})</span>
+        </h3>
 
-         return (
-          <li className="flex items-center gap-2" key={goal.id}>
-           <CheckCircle2 className="size-4 text-pink-500" />
-           <span className="text-sm text-zinc-400">
-            Você completou "<span className="text-zinc-100">{goal.title}</span>"
-            às <span className="text-zinc-100">{parsedTime}</span>
-           </span>
-          </li>
-         );
-        })}
-       </ul>
-      </div>
-     );
-    })} */}
+        <ul className="space-y-3">
+         {goals.map((goal) => {
+          const parsedTime = dayjs(goal.createdAt).format("HH:mm[h]");
+
+          return (
+           <li className="flex items-center gap-2" key={goal.id}>
+            <CheckCircle2 className="size-4 text-pink-500" />
+            <span className="text-sm text-zinc-400">
+             Você completou "<span className="text-zinc-100">{goal.title}</span>
+             " às <span className="text-zinc-100">{parsedTime}</span>
+            </span>
+           </li>
+          );
+         })}
+        </ul>
+       </div>
+      );
+     })
+    ) : (
+     <div className="space-y-3">
+      <span className="text-sm text-zinc-400 ">
+       Você ainda não completou nenhuma meta essa semana 😕
+      </span>
+     </div>
+    )}
    </div>
   </main>
  );
