@@ -1,6 +1,7 @@
-import { Plus } from "lucide-react";
+import { Plus, Trash } from "lucide-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
+import { deleteGoal } from "../http/delete-goal";
 import { OutlineButton } from "./ui/outline-button";
 import { getPendingGoals } from "../http/get-pending-goals";
 import { createGoalCompletion } from "../http/create-goal-completion";
@@ -24,6 +25,13 @@ export function PendingGoals() {
   queryClient.invalidateQueries({ queryKey: ["summary"] });
  }
 
+ async function handleDelete(goalId: string) {
+  await deleteGoal({ goalId });
+
+  queryClient.invalidateQueries({ queryKey: ["pending-goals"] }); // refaz a querykey sempre que o handle for acionado
+  queryClient.invalidateQueries({ queryKey: ["summary"] });
+ }
+
  return (
   <div className="flex flex-wrap gap-3">
    {data.pendingGoals.map((goal) => {
@@ -35,6 +43,10 @@ export function PendingGoals() {
      >
       <Plus className="size-4 text-zinc-600" />
       {goal.title}
+      <Trash
+       className="size-4 text-white"
+       onClick={() => handleDelete(goal.id)}
+      />
      </OutlineButton>
     );
    })}

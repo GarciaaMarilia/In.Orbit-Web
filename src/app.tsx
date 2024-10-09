@@ -21,7 +21,7 @@ export function App() {
   );
  }
 
-console.log(data.summary)
+
  return (
   <Dialog>
    {data && data.summary?.total > 0 ? (

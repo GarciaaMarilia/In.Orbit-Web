@@ -26,7 +26,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
 
  return (
   <main className="max-w-[540px] py-10 px-5 mx-auto flex flex-col gap-6">
-   <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between">
     <div className="flex items-center gap-3">
      <InOrbitIcon />
      <span className="text-lg font-semibold">
@@ -55,7 +55,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
      </span>
      <span>{completedPercentage}%</span>
     </div>
-   </div>
+   </div> 
 
    <Separator />
 
@@ -63,7 +63,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
 
    <div className="space-y-6">
     <h2 className="text-xl font-medium">Sua semana</h2>
-
+{/* 
     {Object.entries(summary.goalsPerDay).map(([date, goals]) => {
      const weekDay = dayjs(date).format("dddd");
      const parsedDate = dayjs(date).format("D[ de ]MMM");
@@ -91,7 +91,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
        </ul>
       </div>
      );
-    })}
+    })} */}
    </div>
   </main>
  );
