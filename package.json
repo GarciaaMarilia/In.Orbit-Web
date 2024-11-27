@@ -1,40 +1,44 @@
 {
-  "name": "in-orbit-web",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@hookform/resolvers": "^3.9.0",
-    "@radix-ui/react-dialog": "^1.1.2",
-    "@radix-ui/react-progress": "^1.1.0",
-    "@radix-ui/react-radio-group": "^1.2.1",
-    "@tanstack/react-query": "^5.59.0",
-    "dayjs": "^1.11.13",
-    "lucide-react": "^0.447.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.0",
-    "sonner": "^1.5.0",
-    "tailwind-merge": "^2.5.2",
-    "tailwind-variants": "^0.2.1",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.2",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.13",
-    "typescript": "^5.5.3",
-    "vite": "^5.4.1"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+ "name": "in-orbit-web",
+ "private": true,
+ "version": "0.0.0",
+ "type": "module",
+ "homepage": "https://GarciaaMarilia.github.io/In.Orbit-Web",
+ "scripts": {
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+ },
+ "dependencies": {
+  "@hookform/resolvers": "^3.9.0",
+  "@radix-ui/react-dialog": "^1.1.2",
+  "@radix-ui/react-progress": "^1.1.0",
+  "@radix-ui/react-radio-group": "^1.2.1",
+  "@tanstack/react-query": "^5.59.0",
+  "dayjs": "^1.11.13",
+  "lucide-react": "^0.447.0",
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "react-hook-form": "^7.53.0",
+  "sonner": "^1.5.0",
+  "tailwind-merge": "^2.5.2",
+  "tailwind-variants": "^0.2.1",
+  "zod": "^3.23.8"
+ },
+ "devDependencies": {
+  "@biomejs/biome": "^1.9.2",
+  "@types/react": "^18.3.3",
+  "@types/react-dom": "^18.3.0",
+  "@vitejs/plugin-react": "^4.3.1",
+  "autoprefixer": "^10.4.20",
+  "gh-pages": "^6.2.0",
+  "postcss": "^8.4.47",
+  "tailwindcss": "^3.4.13",
+  "typescript": "^5.5.3",
+  "vite": "^5.4.1"
+ },
+ "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

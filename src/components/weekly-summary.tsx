@@ -37,7 +37,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
     <DialogTrigger asChild>
      <Button size="sm">
       <Plus className="size-4" />
-      Cadastrar meta
+      Enregistrer un objectif
      </Button>
     </DialogTrigger>
    </div>
@@ -49,10 +49,12 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
 
     <div className="flex items-center justify-between text-xs text-zinc-400">
      <span>
-      Você completou <span className="text-zinc-100">{summary.completed}</span>{" "}
-      de <span className="text-zinc-100">{summary.total}</span> metas nessa
-      semana.
+      Vous avez complété
+      <span className="text-zinc-100">{summary.completed}</span> sur
+      <span className="text-zinc-100">{summary.total}</span> objectifs cette
+      semaine.
      </span>
+
      <span>{completedPercentage}%</span>
     </div>
    </div>
@@ -62,7 +64,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
    <PendingGoals />
 
    <div className="space-y-6">
-    <h2 className="text-xl font-medium">Sua semana</h2>
+    <h2 className="text-xl font-medium">Votre semaine</h2>
 
     {Object.entries(summary.goalsPerDay).map(([date, goals]) => {
      const weekDay = dayjs(date).format("dddd");
@@ -82,8 +84,9 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
           <li className="flex items-center gap-2" key={goal.id}>
            <CheckCircle2 className="size-4 text-pink-500" />
            <span className="text-sm text-zinc-400">
-            Você completou "<span className="text-zinc-100">{goal.title}</span>"
-            às <span className="text-zinc-100">{parsedTime}</span>
+            Vous avez complété "
+            <span className="text-zinc-100">{goal.title}</span>" à
+            <span className="text-zinc-100">{parsedTime}</span>
            </span>
           </li>
          );

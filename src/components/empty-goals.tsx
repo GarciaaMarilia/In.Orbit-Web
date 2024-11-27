@@ -12,17 +12,18 @@ export function EmptyGoals() {
 
    <img
     src={rocketLaunchIllustration}
-    alt="Ilustração de uma mulher controlando um lançamento de um foguete através de um controle remoto"
+    alt="Illustration d'une femme contrôlant le lancement d'une fusée à l'aide d'une télécommande"
    />
 
    <p className="text-zinc-300 leading-relaxed max-w-80 text-center">
-    Você ainda não cadastrou nenhuma meta, que tal cadastrar uma agora mesmo?
+    Vous n'avez encore enregistré aucun objectif, pourquoi ne pas en ajouter un
+    dès maintenant ?
    </p>
 
    <DialogTrigger asChild>
     <Button>
      <Plus className="size-4" />
-     Cadastrar meta
+     Enregistrer un objectif
     </Button>
    </DialogTrigger>
   </main>
