@@ -49,8 +49,8 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
 
     <div className="flex items-center justify-between text-xs text-zinc-400">
      <span>
-      Vous avez complété
-      <span className="text-zinc-100">{summary.completed}</span> sur
+      Vous avez complété {" "}
+      <span className="text-zinc-100">{summary.completed}</span> sur {" "}
       <span className="text-zinc-100">{summary.total}</span> objectifs cette
       semaine.
      </span>
@@ -66,7 +66,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
    <div className="space-y-6">
     <h2 className="text-xl font-medium">Votre semaine</h2>
 
-    {Object.entries(summary.goalsPerDay).map(([date, goals]) => {
+    {summary.goalsPerDay && Object.entries(summary.goalsPerDay).map(([date, goals]) => {
      const weekDay = dayjs(date).format("dddd");
      const parsedDate = dayjs(date).format("D[ de ]MMM");
 
