@@ -24,12 +24,14 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
 
      <div className=" px-4 py-3 flex justify-end space-x-2">
       <button
+       type="button"
        onClick={onCancel}
        className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded hover:bg-gray-300"
       >
        Annuler
       </button>
       <button
+       type="button"
        onClick={onConfirm}
        className="px-4 py-2 text-sm font-medium text-white bg-pink-600 rounded hover:bg-pink-700"
       >

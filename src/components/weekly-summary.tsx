@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import dayjs from "dayjs";
-// import ptBR from "dayjs/locale/pt-BR";
-import { CheckCircle2, Plus, Trash2 } from "lucide-react";
+import { toast } from "sonner";
 import { DialogTrigger } from "@radix-ui/react-dialog";
+import { CheckCircle2, Plus, Trash2 } from "lucide-react";
 
 import { Modal } from "./ui/modal";
 import { Button } from "./ui/button";
@@ -12,8 +12,7 @@ import { InOrbitIcon } from "./in-orbit-icon";
 import { PendingGoals } from "./pending-goals";
 import type { GetSummaryResponse } from "../http/get-summary";
 import { Progress, ProgressIndicator } from "./ui/progress-bar";
-
-// dayjs.locale(ptBR);
+import { deleteCompletition } from "../http/delete-completition";
 
 interface WeeklySummaryProps {
  summary: GetSummaryResponse["summary"];
@@ -24,14 +23,32 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
  const toDate = dayjs().endOf("week").format("D[ de ]MMM");
 
  const [deleteGoalModal, setDeleteGoalModal] = useState<boolean>(false);
+ const [selectedCompletitionId, setSelectedCompletitionId] =
+  useState<string>("");
 
- const openDeleteGoalModal = () => {
+ const openDeleteGoalModal = (completitionId: string) => {
   setDeleteGoalModal(true);
+  setSelectedCompletitionId(completitionId);
  };
 
  const closeDeleteGoalModal = () => {
   setDeleteGoalModal(false);
+  setSelectedCompletitionId("");
  };
+
+ async function handleDeleteCompletition() {
+  try {
+   if (selectedCompletitionId) {
+    await deleteCompletition({ completitionId: selectedCompletitionId });
+    window.location.reload();
+   }
+   toast.success("Objectif suprimé avec succès !");
+  } catch (error) {
+   toast.error(
+    "Erreur lors de la suppression de l'objectif, veuillez réessayer !"
+   );
+  }
+ }
 
  const completedPercentage = Math.round(
   (summary.completed * 100) / summary.total
@@ -103,7 +120,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
              <span className="text-zinc-100">{goal.title}</span>" à{" "}
              <span className="text-zinc-100">{parsedTime}</span>
             </span>
-            <button onClick={openDeleteGoalModal}>
+            <button type="button" onClick={() => openDeleteGoalModal(goal.id)}>
              <Trash2 className="size-4 text-pink-500" />
             </button>
            </li>
@@ -117,7 +134,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
     <Modal
      isOpen={deleteGoalModal}
      title="Êtes-vous sûr de vouloir supprimer votre objectif ?"
-     onConfirm={closeDeleteGoalModal}
+     onConfirm={() => handleDeleteCompletition()}
      onCancel={closeDeleteGoalModal}
     />
    </div>
